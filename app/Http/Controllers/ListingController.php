@@ -35,10 +35,10 @@ class ListingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $category, string $id)
+    public function show(string $category, string $title)
     {
         //
-        $listings = Listing::where('picture',$id)->get();
+        $listings = Listing::where('title',$title)->get();
         if ($listings->isEmpty()) {
             abort(404);
         }

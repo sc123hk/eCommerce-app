@@ -1,6 +1,7 @@
 body {
-    background-image: url('../img/background.png');
-    background-repeat: repeat;
+    /* background-image: url('../img/background.png');
+    background-repeat: repeat; */
+    background-color: whitesmoke;
 }
 
 a {
@@ -12,7 +13,7 @@ a {
 }
 
 .button-group {
-    margin-bottom: 2vh; 
+    margin-bottom: 3vh; 
 }
 
 .btn {
@@ -25,8 +26,7 @@ a {
 }
 
 #title {
-    color: white;
-    text-shadow: 2px 2px black;
+    color: black;
 }
 
 input {
@@ -35,9 +35,4 @@ input {
 
 .session-alert {
     text-align: center;
-}
-
-tr,th,td {
-    color: white;
-    text-shadow: 2px 2px black;
 }

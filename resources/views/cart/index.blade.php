@@ -8,15 +8,15 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Quantity</th>
+                        <th scope="col">Pin Location</th>
+                        <th scope="col">Ticket Number</th>
                         <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if ($cart == null)
                         <tr>
-                            <th scope="col">No items in Cart!</th>
+                            <th scope="col">No Pins in Map!</th>
                             <td scope="col">-</td>
                             <td scope="col">-</td>
                         </tr>

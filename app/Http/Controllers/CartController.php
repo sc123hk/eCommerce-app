@@ -40,12 +40,12 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(string $category, string $id, Request $request)
+    public function store(string $category, string $title, Request $request)
     {
         //
-        $listings = Listing::where('picture',$id)->get();
+        $listings = Listing::where('title',$title)->get();
         if ($listings[0]->quantity == 0) {
-            return redirect()->route('listing.show', ['category' => $category, 'id' => $id])->with('message','Out of Stock!');
+            return redirect()->route('listing.show', ['category' => $category, 'id' => $title])->with('message','Quota Full!');
         }
         // $cart = $request->session()->get('cart',[]);
         // $exist = false;
@@ -82,7 +82,7 @@ class CartController extends Controller
             $cartListings->quantity = 1;
             $cartListings->save();
         }
-        return redirect()->route('listing.show', ['category' => $category, 'id' => $id])->with('message','Add to Cart successfully!');
+        return redirect()->route('listing.show', ['category' => $category, 'title' => $title])->with('message','Pin to Map Successfully!');
     }
 
     /**
@@ -176,7 +176,7 @@ class CartController extends Controller
         foreach ($cartListings as $cartListing) {
             $listings = Listing::where('id',$cartListing->listing_id)->get();
             if ($cartListing->quantity > $listings[0]->quantity) {
-                return redirect()->route('cart.index')->with('message','Insufficient for '.$listings[0]->title);
+                return redirect()->route('cart.index')->with('message','Full Quota for the Trip to'.$listings[0]->title);
             }
             $total += $listings[0]->price * $cartListing->quantity;
             array_push($cart, [
@@ -209,6 +209,6 @@ class CartController extends Controller
             $orderRow->save();
             $cartListing->delete();
         }
-        return redirect()->route('cart.index')->with('message','Purchase successfully!');
+        return redirect()->route('cart.index')->with('message','Purchase Successfully!');
     }
 }

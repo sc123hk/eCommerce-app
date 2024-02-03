@@ -46,3 +46,10 @@ php artisan serve
 
 > Version 1.4
 - Responsive design for all devices
+
+> Version 1.5
+- Admin entry (Still in progress)
+- Responsive design improvement
+- Seeder provided
+- Breadcrumb added
+- GUI improvement

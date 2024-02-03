@@ -61,7 +61,7 @@ class OrderController extends Controller
         }
         $order->updated_at = now();
         $order->save();
-        return redirect()->route('order.index')->with('message', 'Order updated successfully');
+        return redirect()->route('order.index')->with('message', 'Trip Updated Successfully');
     }
 
     /**

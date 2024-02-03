@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +35,13 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware('auth')->group(function () {
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('admin');
 
-    Route::get('/', function () {
-        return redirect('/All');
-    });
+Route::get('/', function () {
+    return redirect('/All');
+});
+
+Route::middleware('auth')->group(function () {
 
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 
@@ -52,14 +55,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/cart/checkout', [CartController::class, 'purchase'])->name('cart.purchase');
 
-    Route::get('/{category}', [ListingController::class, 'filter'])->name('listing.filter');
-
-    Route::get('/{category}/{id}',[ListingController::class, 'show'])->name('listing.show');
-
-    Route::get('/{category}/{id}/store', [CartController::class, 'store'])->name('cart.store');
+    Route::get('/{category}/{title}/store', [CartController::class, 'store'])->name('cart.store');
 
 });
 
+Route::get('/{category}', [ListingController::class, 'filter'])->name('listing.filter');
+
+Route::get('/{category}/{title}',[ListingController::class, 'show'])->name('listing.show');
 
 
 
