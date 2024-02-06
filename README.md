@@ -53,3 +53,7 @@ php artisan serve
 - Seeder provided
 - Breadcrumb added
 - GUI improvement
+
+> Version 1.6
+- Request limitation
+- GUI improvement

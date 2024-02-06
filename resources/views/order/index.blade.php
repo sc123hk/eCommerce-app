@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Trip to <u>{{$order->title}}</u></h5>
-                            <b class="card-text">Ticket: {{$order->quantity}}</b>
+                            <p class="card-text">Ticket: {{$order->quantity}}</p>
                             @if ($order->created_at == $order->updated_at)
                                 <button type="submit" class="btn btn-secondary">Cancel <i class="bi bi-calendar-x"></i></button>
                             @else
