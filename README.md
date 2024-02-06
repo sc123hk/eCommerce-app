@@ -7,21 +7,20 @@ An eCommerce application.
 ## Environment
 ```
 php artisan --version
-Laravel Framework 10.3.3
+Laravel Framework 10.9.0
 php -v
-PHP 8.1.2
+PHP 8.2.9
+sqlite3 --version
+3.40.0
 ```
-
-## Configuration
-| file | field | value |
-| --- | --- | --- |
-| .env | DB_DATABASE | database name |
-| | DB_USERNAME | mysql user name |
-| | DB_PASSWORD | mysql user password | 
 
 ## Setup
 ```
+Clone env example file as .env
+php artisan key:generate
+composer install
 php artisan migrate
+php artisan db:seed --class ListingSeeder
 php artisan serve
 ```
 
