@@ -17,11 +17,13 @@ sqlite3 --version
 ## Setup
 ```
 Clone env example file as .env
-php artisan key:generate
-composer install
-php artisan migrate
-php artisan db:seed --class ListingSeeder
-php artisan serve
+- php artisan key:generate
+- composer install
+- php artisan migrate
+- php artisan db:seed --class ListingSeeder
+Uncomment the line 15-18 in /routes/auth.php to activate the user registration feature
+- php artisan serve
+Go to localhost:8000/register to create a new account
 ```
 
 ## Development Log
