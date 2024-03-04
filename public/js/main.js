@@ -25,3 +25,19 @@ $('.item-quantity').change(function (e) {
         $(this).val(1);
     }
 });
+
+$('#showProductBtn').click(function (e) { 
+    e.preventDefault();
+    title = $('#showTitle option:selected').text();
+    $.ajax({
+        type: "GET",
+        url: '/admin',
+        data: {"title": title},
+        success: function (response) {
+            $('#showCategory').val(response['category']);
+            $('#showDescription').val(response['description']);
+            $('#showPrice').val(response['price']);
+            $('#showQuantity').val(response['quantity']);
+        }
+    });
+});

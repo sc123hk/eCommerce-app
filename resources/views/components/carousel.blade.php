@@ -1,7 +1,7 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{asset("img/{$listing->picture}.jpg")}}" class="d-block w-100 img-thumbnail" alt="...">
+            <img src="{{asset("img/{$listing->id}.jpg")}}" class="d-block w-100 img-thumbnail" alt="...">
         </div>
         <div class="carousel-item">
             <img src="{{asset('img/tmp.jpg')}}" class="d-block w-100 img-thumbnail" alt="...">

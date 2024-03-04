@@ -35,7 +35,16 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('admin');
+Route::middleware('admin')->group(function () {
+
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+    Route::post('/admin', [AdminController::class, 'create'])->name('admin.create');
+
+    Route::delete('/admin', [AdminController::class, 'delete'])->name('admin.delete');
+
+    Route::patch('/admin', [AdminController::class, 'update'])->name('admin.update');
+});
 
 Route::get('/', function () {
     return redirect('/All');

@@ -19,7 +19,6 @@ class ListingSeeder extends Seeder
             'description' => 'Japan description',
             'price' => 8000,
             'quantity' => 4,
-            'picture' => 1,
         ]);
 
         \App\Models\Listing::create([
@@ -28,7 +27,6 @@ class ListingSeeder extends Seeder
             'description' => 'England description',
             'price' => 18000,
             'quantity' => 13,
-            'picture' => 2,
         ]);
 
         \App\Models\Listing::create([
@@ -37,7 +35,6 @@ class ListingSeeder extends Seeder
             'description' => 'United State description',
             'price' => 26000,
             'quantity' => 20,
-            'picture' => 3,
         ]);
 
         \App\Models\Listing::create([
@@ -46,7 +43,6 @@ class ListingSeeder extends Seeder
             'description' => 'South Africa description',
             'price' => 7000,
             'quantity' => 17,
-            'picture' => 4,
         ]);
     }
 }

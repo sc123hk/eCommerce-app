@@ -1,7 +1,7 @@
 <div class="col">
     <div class="card">
         <a href="{{route('listing.show',[$filterValue,$listing->title])}}">
-            <img src="{{asset("img/{$listing->picture}.jpg")}}" class="card-img-top img-thumbnail" alt="...">
+            <img src="{{asset("img/{$listing->id}.jpg")}}" class="card-img-top img-thumbnail" alt="...">
         </a>
         <div class="card-body">
             <h5 class="card-title"><a href="{{route('listing.show',[$filterValue,$listing->title])}}">{{$listing->title}}</a></h5>

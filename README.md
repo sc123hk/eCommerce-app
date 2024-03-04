@@ -58,3 +58,17 @@ Go to localhost:8000/register to create a new account
 > Version 1.6
 - Request limitation
 - GUI improvement
+
+> Version 1.7
+- Admin panel (url: /admin)
+
+## Demo account
+
+> Normal User
+- Email: test@gmail.com
+- Passwd: testtest
+
+
+> Admin
+- Email: admin@gmail.com
+- Passwd: adminadmin
