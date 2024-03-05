@@ -5,8 +5,8 @@
     <div class="col-lg-3 button-group">
         <form method="POST" action="{{route('logout')}}">
             @csrf
-            <a href="{{route('order.index')}}" class="btn btn-success">Trips <i class="bi bi-airplane"></i></a> 
-            <a href="{{route('cart.index')}}" class="btn btn-warning">Pins <i class="bi bi-pin-map"></i></a>  
+            <a href="{{route('order.read')}}" class="btn btn-success">Order <i class="bi bi-file-text"></i></a> 
+            <a href="{{route('cart.read')}}" class="btn btn-warning">Cart <i class="bi bi-cart4"></i></a>  
             @auth
                 <button type="submit" class="btn btn-secondary">Logout <i class="bi bi-door-open"></i></button>
             @endauth

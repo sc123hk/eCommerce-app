@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 class AdminController extends Controller
 {
     //
-    public function index(Request $request) {
+    public function read(Request $request) {
         $listings = Listing::all();
         if ($request->has('title')) {
             $listing = Listing::where('title',$request->input('title'))->get();
@@ -41,7 +41,7 @@ class AdminController extends Controller
             $image = $request->file('image');
             $image->move(public_path('img'),strval(Listing::max('id')).'.jpg');
         }
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.read');
     }
 
     public function delete(Request $request) {
@@ -50,7 +50,7 @@ class AdminController extends Controller
             $listing->delete();
         }
         File::delete(public_path('img/'.strval($request->listingId).'.jpg'));
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.read');
     }
 
     public function update(Request $request) {
@@ -60,6 +60,6 @@ class AdminController extends Controller
         $listing->price = is_null($request->price) ? $listing->price : $request->price;
         $listing->quantity = is_null($request->quantity) ? $listing->quantity : $request->quantity;
         $listing->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.read');
     }
 }

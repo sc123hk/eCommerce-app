@@ -19,9 +19,9 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.guest');
-});
+// Route::get('/', function () {
+//     return view('layouts.guest');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -35,28 +35,19 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware('admin')->group(function () {
+Route::get('/{suffix?}', function () {
+    return redirect('/listings/All');
+})->whereIn('suffix',['listings']);
 
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
-    Route::post('/admin', [AdminController::class, 'create'])->name('admin.create');
-
-    Route::delete('/admin', [AdminController::class, 'delete'])->name('admin.delete');
-
-    Route::patch('/admin', [AdminController::class, 'update'])->name('admin.update');
-});
-
-Route::get('/', function () {
-    return redirect('/All');
-});
+Route::get('/listings/{category?}/{title?}',[ListingController::class, 'read'])->name('listing.read');
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order', [OrderController::class, 'read'])->name('order.read');
 
     Route::post('/order', [OrderController::class, 'update'])->name('order.update');
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart', [CartController::class, 'read'])->name('cart.read');
 
     Route::post('/cart', [CartController::class, 'update'])->name('cart.update');
 
@@ -64,13 +55,23 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/cart/checkout', [CartController::class, 'purchase'])->name('cart.purchase');
 
-    Route::get('/{category}/{title}/store', [CartController::class, 'store'])->name('cart.store');
+    Route::post('/listings/{category}/{title}', [CartController::class, 'create'])->name('cart.create');
 
 });
 
-Route::get('/{category}', [ListingController::class, 'filter'])->name('listing.filter');
+Route::middleware('admin')->group(function () {
 
-Route::get('/{category}/{title}',[ListingController::class, 'show'])->name('listing.show');
+    Route::get('/admin', [AdminController::class, 'read'])->name('admin.read');
+
+    Route::post('/admin', [AdminController::class, 'create'])->name('admin.create');
+
+    Route::delete('/admin', [AdminController::class, 'delete'])->name('admin.delete');
+
+    Route::patch('/admin', [AdminController::class, 'update'])->name('admin.update');
+    
+});
+
+
 
 
 

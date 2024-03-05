@@ -8,15 +8,15 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Pin Location</th>
-                        <th scope="col">Ticket Number</th>
+                        <th scope="col">Listing</th>
+                        <th scope="col">Number</th>
                         <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if ($cart == null)
                         <tr>
-                            <th scope="col">No Pins in Map!</th>
+                            <th scope="col">No Listing in Cart!</th>
                             <td scope="col">-</td>
                             <td scope="col">-</td>
                         </tr>
@@ -33,7 +33,6 @@
                 </tbody>
             </table>
             @if ($cart != null)
-                {{-- <button type="submit" class="btn btn-primary">Refresh <i class="bi bi-arrow-repeat"></i></button> --}}
                 <a href="{{ route('cart.checkout') }}" class="btn btn-success">Checkout <i
                         class="bi bi-cart-check"></i></a>
             @endif

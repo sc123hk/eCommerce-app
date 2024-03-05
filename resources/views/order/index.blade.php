@@ -13,12 +13,12 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Trip to <u>{{$order->title}}</u></h5>
-                            <p class="card-text">Ticket: {{$order->quantity}}</p>
+                            <p class="card-text">Number: {{$order->quantity}}</p>
                             @if ($order->created_at == $order->updated_at)
-                                <button type="submit" class="btn btn-secondary">Cancel <i class="bi bi-calendar-x"></i></button>
+                                <button type="submit" class="btn btn-secondary">Cancel <i class="bi bi-x-circle"></i></button>
                             @else
                                 <hr>
-                                <p class="card-text">Refund query time: {{$order->updated_at}}</p>
+                                <p class="card-text">Cancel query time: {{$order->updated_at}}</p>
                                 <p class="card-text">Estimated completion time: {{$order->updated_at->modify('+15 days')}}</p>
                                 <button class="btn btn-secondary" disabled>Processing <i class="bi bi-clock-history"></i></button>
                             @endif
