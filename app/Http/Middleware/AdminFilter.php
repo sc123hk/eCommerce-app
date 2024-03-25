@@ -23,6 +23,7 @@ class AdminFilter
             return $next($request);
         }
         // Redirect or return an error response for non-admin users
-        abort(403);
+        // abort(403);
+        return redirect()->route('login');
     }
 }
