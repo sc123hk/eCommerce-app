@@ -7,9 +7,11 @@
             @csrf
             <a href="{{route('order.read')}}" class="btn btn-success">Order <i class="bi bi-file-text"></i></a> 
             <a href="{{route('cart.read')}}" class="btn btn-warning">Cart <i class="bi bi-cart4"></i></a>  
-            @auth
+            @if(Auth::check())
                 <button type="submit" class="btn btn-secondary">Logout <i class="bi bi-door-open"></i></button>
-            @endauth
+            @else
+                <a href="{{route('login')}}" class="btn btn-primary">Login <i class="bi bi-door-closed"></i></a> 
+            @endif
         </form>
     </div>
 </div>

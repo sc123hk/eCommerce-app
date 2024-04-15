@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +54,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
-    Route::post('/cart/checkout', [CartController::class, 'purchase'])->name('cart.purchase');
-
     Route::post('/listings/{category}/{title}', [CartController::class, 'create'])->name('cart.create');
+
+    Route::post('/paypal/pay', [PayPalController::class, 'pay'])->name('paypal.pay');
+
+    Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+    
+    Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
 
 });
 

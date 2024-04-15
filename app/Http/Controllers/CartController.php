@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Listing;
 use App\Models\CartListing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -86,23 +87,7 @@ class CartController extends Controller
                 'quantity' => $cartListing->quantity
             ]);
         }
+        Session::put('total', $total);
         return view('cart.checkout',['total' => $total, 'cart' => $cart]);
-    }
-
-    public function purchase()
-    {
-        $cartListings = CartListing::where('user_id', auth()->user()->id)->get();
-        foreach ($cartListings as $cartListing) {
-            $listings = Listing::where('id',$cartListing->listing_id)->get();
-            $listings[0]->quantity -= $cartListing->quantity;
-            $listings[0]->save();
-            $orderRow = new Order();
-            $orderRow->user_id = auth()->user()->id;
-            $orderRow->title = $listings[0]->title;
-            $orderRow->quantity = $cartListing->quantity;
-            $orderRow->save();
-            $cartListing->delete();
-        }
-        return redirect()->route('cart.read')->with('message','Purchase Successfully!');
     }
 }

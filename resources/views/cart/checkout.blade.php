@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <form action="{{ route('cart.purchase') }}" method="POST">
+            <form action="{{ route('paypal.pay') }}" method="POST">
                 @csrf
                 <table class="table">
                     <thead>
@@ -28,7 +28,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-warning">Purchase <i class="bi bi-bag-check"></i></button>
+                <button type="submit" class="btn btn-primary">Purchase via PayPal <i class="bi bi-paypal"></i></button>
             </form>
         </div>
         <div class="col-3"></div>
