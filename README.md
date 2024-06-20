@@ -64,14 +64,3 @@ Go to localhost:8000/register to create a new account
 
 > Version 1.8
 - PayPal supported
-
-## Demo account
-
-> Normal User
-- Email: test@gmail.com
-- Passwd: testtest
-
-
-> Admin
-- Email: admin@gmail.com
-- Passwd: adminadmin
